@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pirate City - HPP</title>
+<style>
+.pointer {cursor: pointer;}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://demo.convergepay.com/hosted-payments/Checkout.js"></script>
+<script>
+    	function openHPP () {
+    		var tokenRequest = {
+        			ssl_merchant_id: "000004",
+        			ssl_user_id: "apiuser",
+        			ssl_pin: "AGFEEJ3AZWCSZW3IWC7HTUVNCIMJ03SDYTW28KGFPUESY4X1OBST2HMNZ2XFNWNX",
+        			ssl_transaction_type: "CCSALE",
+        			ssl_amount: "20"
+        	};
+			//get token
+			$.post( 
+                  "https://demo.myvirtualmerchant.com/hosted-payments/transaction_token", 
+                  tokenRequest,
+                  function(data) {
+					//redirect to HPP
+					console.log("redirect to HPP, ata:"+data);
+					document.getElementById("ssl_txn_auth_token").value = data;
+					document.getElementById("myForm").submit();
+                  });
+		}
+    </script>
+
+</head>
+
+<body>
+
+<table border="0" width="100%">
+	<tr>
+		<td><a href="index.html"><img border="0" src="LogoMakr_4SuhSm.png" width="200" height="119"><img border="0" src="donate1.gif"></a><table border="0" width="100%">
+	<tr>
+		<td>
+		<img border="0" src="_pdp_sq_.jpg" width="500" height="500"></td>
+		<td align="left" valign="top">
+		<h1 itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		<font size="5">Adult Ghost Pirate Costume</font></h1>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		Now $20.00</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px"></p>
+	
+	<p class="pointer"><img border="0" src="button.png" width="144" height="51" onclick="openHPP();"></p>
+
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		Not even death shall part you from your pillaging and plundering! Ghost
+		Pirate Costume is a pirate outfit that's seen better days. A black
+		trenchcoat has faded to splotchy gray, and a white shirt with torn hems
+		peels back at the chest to reveal the skeleton within.</p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+<hr noshade color="#000000">
+<p align="center"><b><font size="1">(C) Converge 2018</font></b></p>
+
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+</body>
+<form id="myForm" action="https://demo.convergepay.com/hosted-payments/" method="POST">
+	<input type="hidden" name="ssl_txn_auth_token" size="25" value="Session Token" id="ssl_txn_auth_token">
+</form>
+
+</html>

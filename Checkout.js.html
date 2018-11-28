@@ -1,0 +1,134 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pirate City - Checkout.js</title>
+    <style>
+.pointer {cursor: pointer;}
+    </style>
+
+
+</head>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://demo.convergepay.com/hosted-payments/Checkout.js"></script>
+
+ <script>
+
+        var transactionToken;
+
+        var callback = {
+            onError: function (error) {
+                showResult("error", error);
+				window.location.href = "https://www.convergedemo.net/Cancelled.html";
+            },
+            onDeclined: function (response) {
+                showResult("declined", JSON.stringify(response));
+				window.location.href = "https://www.convergedemo.net/Cancelled.html";
+            },
+            onApproval: function (response) {
+                showResult("approval", JSON.stringify(response));
+				window.location.href = "https://www.convergedemo.net/ThankYou.html";
+            },
+            onCancelled: function () {
+                showResult("cancelled", "");
+				window.location.href = "https://www.convergedemo.net/Cancelled.html";
+            }
+        };
+
+        function payNow () {
+            var tokenRequest = {
+                ssl_merchant_id: "000004",
+        			ssl_user_id: "apiuser",
+        			ssl_pin: "AGFEEJ3AZWCSZW3IWC7HTUVNCIMJ03SDYTW28KGFPUESY4X1OBST2HMNZ2XFNWNX",
+        			ssl_transaction_type: "CCSALE",
+        			ssl_amount: "20"
+            };
+            $.post("https://demo.convergepay.com/hosted-payments/transaction_token", tokenRequest, function( data ) {
+				   var paymentData = {
+						ssl_txn_auth_token: data,
+						ssl_card_number: $("#ssl_card_number").val(),
+						ssl_exp_date: $("#ssl_exp_date").val(),
+						ssl_cvv2cvc2: $("#ssl_cvv2cvc2").val()
+					};
+					ConvergeEmbeddedPayment.pay(paymentData, callback);
+					return false;
+				});
+            return false;
+        }
+
+        function showResult (status, msg, hash) {
+			console.log("status:"+status);
+			console.log("msg:"+msg);
+			console.log("hash:"+hash);
+			window.location.href = "https://www.convergedemo.net/Cancelled.html";
+        }
+
+
+
+    </script>
+
+
+<body>
+
+<table border="0" width="100%">
+	<tr>
+		<td><a href="index.html"><img border="0" src="LogoMakr_4SuhSm.png" width="200" height="119"><img border="0" src="donate1.gif"></a><table border="0" width="100%">
+	<tr>
+		<td>
+		<img border="0" src="_pdp_sq_.jpg" width="500" height="500"></td>
+		<td align="left" valign="top">
+		<h1 itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		<font size="5">Adult Ghost Pirate Costume</font></h1>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		Now $20.00</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		<img border="0" src="Cards.png" width="300" height="54"></p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		&nbsp;</p>
+		<table border="0" width="50%">
+			<tr>
+				<td><b><font face="Arial" size="2">Card Number</font></b></td>
+				<td><input type="text" name="T1" size="20" id="ssl_card_number" name="ssl_card_number"></td>
+			</tr>
+			<tr>
+				<td><b><font face="Arial" size="2">Expiry Date (mmyy)</font></b></td>
+				<td>
+				<input type="text" name="ssl_exp_date" size="4" id="ssl_exp_date" type="text" name="ssl_exp_date"></td>
+			</tr>
+			<tr>
+				<td><b><font face="Arial" size="2">CVV</font></b></td>
+				<td>
+				<input type="text" name="ssl_cvv2cvc2" size="4" id="ssl_cvv2cvc2" type="text" name="ssl_cvv2cvc2"></td>
+			</tr>
+		</table>
+
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px"></p>
+		<p class="pointer"><img border="0" src="button.png" width="144" height="51" onclick="return payNow();" alt="Buy Now"></p>
+
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		Not even death shall part you from your pillaging and plundering! Ghost
+		Pirate Costume is a pirate outfit that's seen better days. A black
+		trenchcoat has faded to splotchy gray, and a white shirt with torn hems
+		peels back at the chest to reveal the skeleton within.</p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+
+
+<hr noshade color="#000000">
+<p align="center"><b><font size="1">(C) Converge 2018</font></b></p>
+
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

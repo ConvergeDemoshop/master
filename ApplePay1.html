@@ -1,0 +1,68 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Athena - Demo</title>
+</head>
+
+<body>
+<form action="https://demo.convergepay.com/hosted-payments/transaction_token" method="POST">
+<table border="1" width="40%" bordercolorlight="#C0C0C0" cellspacing="1" bordercolordark="#FFFFFF">
+	<tr>
+		<td colspan="2"><b><font face="Arial Narrow">Step 1: Obtain Session
+		Token</font></b></td>
+	</tr>
+	<tr>
+		<td><font face="Arial Narrow">Converge Account Number</font></td>
+		<td><font face="Arial Narrow">
+		<input type="text" name="ssl_merchant_id" size="6" value="000004"></font></td>
+	</tr>
+	<tr>
+		<td><font face="Arial Narrow">API User ID</font></td>
+		<td><font face="Arial Narrow">
+		<input type="text" name="ssl_user_id" size="20" value="apiuser"></font></td>
+	</tr>
+	<tr>
+		<td><font face="Arial Narrow">API User Terminal Identifier</font></td>
+		<td>
+		<font face="Arial Narrow">
+		<input type="text" name="ssl_pin" size="20" value="AGFEEJ3AZWCSZW3IWC7HTUVNCIMJ03SDYTW28KGFPUESY4X1OBST2HMNZ2XFNWNX"></font></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+<tr>
+		<td><font face="Arial Narrow">Transaction Amount (If available)</font></td>
+		<td><font face="Arial Narrow"><input type="text" name="ssl_amount" size="6" value="10.00"></font></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><font face="Arial Narrow">Transaction Type</font></td>
+		<td><font face="Arial Narrow"><select size="1" name="ssl_transaction_type">
+		<option value="CCSALE">Credit Card Sale</option>
+		<option value="CCAUTHONLY">Credit Card Authorization Only</option>
+		<option value="CCVerify">Credit Card Verification </option>
+		<option value="CCGETTOKEN">Credit Card Get Token</option>
+		<option value="SALE">Generic Sale</option>
+		<option value="AUTHONLY">Generic Authorization Only</option>
+		</select></font></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<input type="text" name="ssl_invoice_number" size="20" value="ELAVON"></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<p align="center">
+		<font face="Arial Narrow">
+		<input type="Submit" value="Request a Session Token" name="Submit"></font></td>
+	</tr>
+</table>
+</form>
+
+</body>
+
+</html>

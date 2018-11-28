@@ -1,0 +1,163 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pirate City - Buy Button</title>
+
+<style>
+.pointer {cursor: pointer;}
+</style>
+
+<style>
+    	.apple-pay-button {
+                -webkit-appearance: -apple-pay-button;
+                -apple-pay-button-type: buy;
+                display: inline-block;
+                width: 100px;
+                min-height: 30px;
+                border: 1px solid black;
+                background-image: -webkit-named-image(apple-pay-logo-black);
+                background-size: 100% calc(60% + 2px);
+                background-repeat: no-repeat;
+                background-color: white;
+                background-position: 50% 50%;
+                border-radius: 5px;
+                padding: 0px;
+                margin: 5px auto;
+                transition: background-color .15s;
+                cursor: pointer;
+		}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://www.convergepay.com/hosted-payments/Checkout.js"></script>
+
+    <script>
+
+    	if(!window.ApplePaySession) {
+    		window.ApplePaySession = function(version, paymentRequest) {
+    			this.version = version;
+    			this.paymentRequest= paymentRequest;
+    			this.begin = function () {
+        			console.log("ApplePaySession.begin()");
+
+        			this.onvalidatemerchant(event);
+        		};
+    			this.completeMerchantValidation = function () {
+    				console.log("ApplePaySession.completeMerchantValidation()");
+    				var event = {
+        					payment:  {
+        						token: {
+        							paymentData: {}
+        						},
+        						billingContact: {},
+        						shippingContact: {}
+        					}
+        			};
+    				this.onpaymentauthorized(event);
+    			};
+    			this.completePayment = function (result) {
+    				console.log("ApplePaySession.completePayment():" + result);
+    			}
+    		};
+    		window.ApplePaySession.prototype = {};
+    		window.ApplePaySession.canMakePayments = true;
+    	}
+
+    	var transactionToken;
+
+    	var callback = {
+			onError: function (error) {
+				//showResult("error", error);
+				window.location.href = "https://www.convergedemo.net/Cancelled.html";
+			},
+			onDeclined: function (response) {
+				//showResult("declined", JSON.stringify(response));
+				window.location.href = "https://www.convergedemo.net/Cancelled.html";
+			},
+			onApproval: function (response) {
+				//showResult("approval", JSON.stringify(response));
+				window.location.href = "https://www.convergedemo.net/ThankYou.html";
+			},
+			onCancelled: function () {
+				//showResult("cancelled", "");
+				window.location.href = "https://www.convergedemo.net/Cancelled.html";
+			}
+   	    };
+
+    	function initiateCheckoutJS () {
+    		var tokenRequest = {
+    			ssl_merchant_id: $("#ssl_merchant_id").val(),
+    			ssl_user_id: $("#ssl_user_id").val(),
+    			ssl_pin: $("#ssl_pin").val(),
+    			ssl_transaction_type: $("#ssl_transaction_type").val(),
+    			ssl_amount: $("#ssl_amount").val()
+    		};
+    		$.post("https://www.convergepay.com/hosted-payments/transaction_token", tokenRequest, function( data ) {
+  				$("#token").html(data);
+  				transactionToken = data;
+  				initiateEwallets();
+			});
+    		return false;
+    	}
+
+    	function initiateEwallets () {
+    		var paymentData = {
+    			ssl_txn_auth_token: transactionToken
+    	    };
+   	    	ConvergeEmbeddedPayment.initApplePay('applepay-button', paymentData, callback);
+   	    	return false;
+    	}
+
+    </script>
+
+</head>
+
+  <body onload="initiateCheckoutJS();">
+
+<table border="0" width="100%">
+	<tr>
+		<td><a href="index.html"><img border="0" src="LogoMakr_4SuhSm.png" width="200" height="119"><img border="0" src="donate1.gif"></a><table border="0" width="100%">
+	<tr>
+		<td>
+		<img border="0" src="_pdp_sq_.jpg" width="500" height="500"></td>
+		<td align="left" valign="top">
+		<h1 itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		<font size="5">Adult Ghost Pirate Costume</font></h1>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		Now $20.00</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: #FF0000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px"></p>
+		<div>
+<div id="applepay-button" class="apple-pay-button"></div>
+
+
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial Black; font-weight: 400; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">&nbsp;</p>
+		<p itemprop="name" style="box-sizing: border-box; font-family: Arial; order: 1; width: 650px; clear: right; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-left: 0px; margin-right: 0px; margin-top: 0.25em; margin-bottom: 0px; padding: 0px">
+		Not even death shall part you from your pillaging and plundering! Ghost
+		Pirate Costume is a pirate outfit that's seen better days. A black
+		trenchcoat has faded to splotchy gray, and a white shirt with torn hems
+		peels back at the chest to reveal the skeleton within.</p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+<hr noshade color="#000000">
+<p align="center"><b><font size="1">(C) Converge 2018</font></b></p>
+
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+  		<form name="getSessionTokenForm">
+  			<input type="hidden" id="ssl_merchant_id" name="ssl_merchant_id" size="6" value="000004">
+  			<input type="hidden" id="ssl_user_id" name="ssl_user_id" size="20" value="apiuser">
+  			<input type="hidden" id="ssl_pin" name="ssl_pin" size="64" value="E4TOIXO3XSQAMWA2SBU13G4NXKKD02AWE9OZE993ZNTR1IECJGTRAYYBPE2IZZ0B">
+  			<input type="hidden" id="ssl_transaction_type" name="ssl_transaction_type" value="CCSALE">
+  			<input type="hidden" id="ssl_amount" name="ssl_amount" value="0.10">
+  			<br>
+  		</form>
+
+</body>
+
+</html>
